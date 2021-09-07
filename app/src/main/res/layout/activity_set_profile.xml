@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".all_activites.all_act.SetProfileActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_imageSetProfileAct"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="1dp"
+        android:src="@drawable/userprofile"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
+
+    <EditText
+        android:id="@+id/personNameSetProfileAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginLeft="90dp"
+        android:ems="10"
+        android:padding="1dp"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:hint="Enter Your Name" />
+
+    <Button
+        android:id="@+id/buttonSetProfileAct"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="120dp"
+        android:layout_marginRight="120dp"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+
+
+</LinearLayout>
