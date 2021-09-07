@@ -8,8 +8,8 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
-import com.example.chatzzandchat.models.MyFireStoreDataClass
-import com.example.chatzzandchat.models.RealtimeName
+import com.example.chatzzandchat.models.UsersList
+import com.example.chatzzandchat.models.RequestName
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnSuccessListener
@@ -87,8 +87,8 @@ class UsersRepo {
 
     fun sendUserNametoRealtime(userName: String, context: Context) {
         val database = auth.uid?.let { Firebase.database.getReference(it) }
-        val realtimeName = RealtimeName(userName, auth.uid)
-        database?.setValue(realtimeName)
+        val requestName = RequestName(userName, auth.uid)
+        database?.setValue(requestName)
         Toast.makeText(context, "Name Is Register", Toast.LENGTH_SHORT).show()
 
     }
@@ -135,13 +135,13 @@ class UsersRepo {
             }
     }
 
-    fun allUserList(): FirestoreRecyclerOptions<MyFireStoreDataClass> {
+    fun allUserList(): FirestoreRecyclerOptions<UsersList> {
         val firebaseFireStore = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
         val query = firebaseFireStore.collection("Users").whereNotEqualTo("Id", auth.uid)
-        val allUserName = FirestoreRecyclerOptions.Builder<MyFireStoreDataClass>().setQuery(
+        val allUserName = FirestoreRecyclerOptions.Builder<UsersList>().setQuery(
             query,
-            MyFireStoreDataClass::class.java
+            UsersList::class.java
         ).build()
         return allUserName
     }

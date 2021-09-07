@@ -8,12 +8,12 @@ import com.example.chatzzandchat.ui.activities.ChatActivity
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.squareup.picasso.Picasso
-import com.example.chatzzandchat.models.MyFireStoreDataClass
+import com.example.chatzzandchat.models.UsersList
 import com.example.chatzzandchat.viewholders.UserListViewHolder
 
 class UserListAdapter(
-    options: FirestoreRecyclerOptions<MyFireStoreDataClass>
-) : FirestoreRecyclerAdapter<MyFireStoreDataClass, UserListViewHolder>(options) {
+    options: FirestoreRecyclerOptions<UsersList>
+) : FirestoreRecyclerAdapter<UsersList, UserListViewHolder>(options) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.chat_layout_rv, parent, false)
@@ -23,7 +23,7 @@ class UserListAdapter(
     override fun onBindViewHolder(
         holder: UserListViewHolder,
         position: Int,
-        model: MyFireStoreDataClass
+        model: UsersList
     ) {
         holder.nameData.text = model.Name
         holder.statusData.text = model.Status

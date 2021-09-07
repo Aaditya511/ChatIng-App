@@ -12,7 +12,7 @@ import com.example.chatzzandchat.viewmodel.msgesviewmodel.MsgesViewModel
 import com.example.chatzzandchat.all_activites.all_adapter_viewholder.listadpter.MsgListAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
-import com.example.chatzzandchat.models.MyMessagesDataClass
+import com.example.chatzzandchat.models.Messages
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlin.collections.ArrayList
 
@@ -82,15 +82,15 @@ class ChatActivity : AppCompatActivity() {
             }
         }
 
-        msgesViewModel.getChat(reciverRoom)
+        msgesViewModel.getPreviousChat(reciverRoom)
     }
 
     fun sendMsgBtnClickListner() {
-        msgesViewModel.spesificChat(msgTypeEt.text.toString(), senderRoom, reciverRoom)
+        msgesViewModel.sendMsg(msgTypeEt.text.toString(), senderRoom, reciverRoom)
     }
 
 
-    fun setRVWithListAdapter(arrayList: ArrayList<MyMessagesDataClass>) {
+    fun setRVWithListAdapter(arrayList: ArrayList<Messages>) {
         msgListAdapter = MsgListAdapter(this, arrayList)
         msgListAdapter.submitList(arrayList)
         recylerView.layoutManager = LinearLayoutManager(this@ChatActivity)

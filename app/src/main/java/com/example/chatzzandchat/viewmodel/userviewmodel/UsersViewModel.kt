@@ -5,7 +5,7 @@ import android.net.Uri
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.chatzzandchat.models.MyFireStoreDataClass
+import com.example.chatzzandchat.models.UsersList
 import com.example.chatzzandchat.repository.userrepo.UsersRepo
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.android.gms.tasks.OnCompleteListener
@@ -43,7 +43,7 @@ class UsersViewModel : ViewModel() {
         return userRepo.storedVerificationId
     }
 
-    fun sendDataToFB(userName: String, context: Context, imagePathUri: Uri) {
+    fun sendDataToServer(userName: String, context: Context, imagePathUri: Uri) {
         userRepo.sendUserNametoRealtime(userName, context)
         userRepo.sendImageToStorage(
             context,
@@ -60,7 +60,7 @@ class UsersViewModel : ViewModel() {
 
     }
 
-    fun allUserList(): FirestoreRecyclerOptions<MyFireStoreDataClass> {
+    fun allUserList(): FirestoreRecyclerOptions<UsersList> {
         val users = userRepo.allUserList()
         return users
     }

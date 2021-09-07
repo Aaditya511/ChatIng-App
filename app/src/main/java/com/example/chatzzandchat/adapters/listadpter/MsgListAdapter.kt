@@ -10,10 +10,10 @@ import com.example.chatzzandchat.adapters.listadpter.MsgDiffUtil
 import com.example.chatzzandchat.viewholders.ReciverViewHolder
 import com.example.chatzzandchat.viewholders.SenderViewHolder
 import com.google.firebase.auth.FirebaseAuth
-import com.example.chatzzandchat.models.MyMessagesDataClass
+import com.example.chatzzandchat.models.Messages
 
-class MsgListAdapter(val context: Context, val arrayList: ArrayList<MyMessagesDataClass>) :
-    ListAdapter<MyMessagesDataClass, RecyclerView.ViewHolder>(
+class MsgListAdapter(val context: Context, val arrayList: ArrayList<Messages>) :
+    ListAdapter<Messages, RecyclerView.ViewHolder>(
         MsgDiffUtil()
     ) {
     var itemSend = 1

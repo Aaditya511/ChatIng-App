@@ -1,6 +1,6 @@
 package com.example.chatzzandchat.models
 
-data class MyMessagesDataClass(
+data class Messages(
     val message: String? = null,
     val senderId: String? = null,
     val timestamp: Long? = null,

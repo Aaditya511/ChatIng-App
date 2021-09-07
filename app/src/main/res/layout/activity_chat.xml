@@ -50,10 +50,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:padding="2dp"
-                android:text="User Name"
+                android:text="@string/user_name"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold">
+
+            </TextView>
 
 
         </LinearLayout>
@@ -86,7 +88,7 @@
             android:id="@+id/msgType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Type Your MSG"
+            android:hint="@string/msg_type_hint"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:padding="3dp"

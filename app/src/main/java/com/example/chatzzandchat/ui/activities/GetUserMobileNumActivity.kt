@@ -17,7 +17,7 @@ class GetUserMobileNumActivity : AppCompatActivity() {
     val auth = FirebaseAuth.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_get_user_num)
         phoneNumber = findViewById(R.id.phoneNumberMainAct)
         submitBtn = findViewById(R.id.buttonMainAct)
         ccpCountry = findViewById(R.id.ccp)

@@ -24,7 +24,7 @@ class UpdateProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_set_profile)
+        setContentView(R.layout.activity_update_profile)
         profilePic = findViewById(R.id.profile_imageSetProfileAct)
         name = findViewById(R.id.personNameSetProfileAct)
         btn = findViewById(R.id.buttonSetProfileAct)
@@ -36,7 +36,7 @@ class UpdateProfileActivity : AppCompatActivity() {
                 Toast.makeText(this, "Plz PiC Your Profile Img", Toast.LENGTH_SHORT).show()
 
             } else {
-                imagePathUri?.let { it1 -> viewModel.sendDataToFB(name.text.toString(), this, it1) }
+                imagePathUri?.let { it1 -> viewModel.sendDataToServer(name.text.toString(), this, it1) }
                 startActivity(Intent(this, UserListActivity::class.java))
 
             }

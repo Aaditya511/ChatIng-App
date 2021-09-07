@@ -24,7 +24,7 @@
             android:layout_alignParentLeft="true"
             android:textSize="16sp"
             android:textColor="@android:color/white"
-            android:text="Hi" />
+            android:text="@string/demo_msg" />
 
         <TextView
             android:id="@+id/date_textSenderrrr"

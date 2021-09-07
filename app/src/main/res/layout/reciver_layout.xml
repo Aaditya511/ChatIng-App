@@ -23,7 +23,7 @@
             android:layout_alignParentLeft="true"
             android:textSize="16sp"
             android:textColor="@android:color/black"
-            android:text="Hello Adi" />
+            android:text="@string/demo_msg" />
 
         <TextView
             android:id="@+id/date_textReciver"
