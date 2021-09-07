@@ -1,13 +1,13 @@
-package com.example.chatzzandchat.all_activites.repository
+package com.example.chatzzandchat.repository.msgesrepo
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.example.chatzzandchat.dataclasses.MyMessagesDataClass
+import com.example.chatzzandchat.models.MyMessagesDataClass
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PersnolChatRepo {
+class ChatRepo {
 
     val auth = FirebaseAuth.getInstance()
     val firebaseDb = FirebaseDatabase.getInstance()
@@ -29,10 +29,11 @@ class PersnolChatRepo {
 
     }
 
-   fun getChat(reciverRoom: String, chatHistoryCallback: ValueEventListener){
-       val databaseReference = firebaseDb.getReference("Chats").child(reciverRoom).child("Messages")
-       databaseReference.addValueEventListener(chatHistoryCallback)
-   }
+    fun getChat(reciverRoom: String, chatHistoryCallback: ValueEventListener) {
+        val databaseReference =
+            firebaseDb.getReference("Chats").child(reciverRoom).child("Messages")
+        databaseReference.addValueEventListener(chatHistoryCallback)
+    }
 
 
 }

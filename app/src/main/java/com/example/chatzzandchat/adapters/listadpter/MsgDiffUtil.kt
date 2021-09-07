@@ -1,9 +1,9 @@
-package com.example.chatzzandchat.all_activites.all_adapter_viewholder.listadpter
+package com.example.chatzzandchat.adapters.listadpter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.chatzzandchat.dataclasses.MyMessagesDataClass
+import com.example.chatzzandchat.models.MyMessagesDataClass
 
-class MyDiffUtil:DiffUtil.ItemCallback<MyMessagesDataClass>() {
+class MsgDiffUtil : DiffUtil.ItemCallback<MyMessagesDataClass>() {
     override fun areItemsTheSame(
         oldItem: MyMessagesDataClass,
         newItem: MyMessagesDataClass

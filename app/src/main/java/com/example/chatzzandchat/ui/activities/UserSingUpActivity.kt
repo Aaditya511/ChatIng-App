@@ -1,4 +1,4 @@
-package com.example.chatzzandchat
+package com.example.chatzzandchat.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,15 +8,15 @@ import android.widget.EditText
 import android.widget.Toast
 
 import androidx.lifecycle.ViewModelProvider
-import com.example.chatzzandchat.all_activites.MyViewModel
-import com.example.chatzzandchat.all_activites.all_act.SetProfileActivity
+import com.example.chatzzandchat.R
+import com.example.chatzzandchat.viewmodel.userviewmodel.UsersViewModel
 
 import com.google.firebase.auth.PhoneAuthProvider
 
 class UserSingUpActivity : AppCompatActivity() {
     lateinit var otp: EditText
     lateinit var btn: Button
-    lateinit var myMyViewModel: MyViewModel
+    lateinit var usersViewModel: UsersViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_oth)
@@ -24,8 +24,8 @@ class UserSingUpActivity : AppCompatActivity() {
         btn = findViewById(R.id.buttonOthAct)
         val userNumber = intent.getStringExtra("MobileNumber")
         Toast.makeText(this, "" + userNumber, Toast.LENGTH_SHORT).show()
-        myMyViewModel = ViewModelProvider(this)[MyViewModel::class.java]
-        userNumber?.let { myMyViewModel.SendingVerificationCodeMVVM(it, this) }
+        usersViewModel = ViewModelProvider(this)[UsersViewModel::class.java]
+        userNumber?.let { usersViewModel.SendingVerificationCodeMVVM(it, this) }
 
         btn.setOnClickListener {
             if (otp.text.isEmpty()) {
@@ -34,9 +34,11 @@ class UserSingUpActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter full otp", Toast.LENGTH_SHORT).show()
             } else {
                 val credential =
-                    PhoneAuthProvider.getCredential(myMyViewModel.getOtp(), otp.text.toString())
-                myMyViewModel.signInWithPhoneAuthCredential(credential, this)
-                startActivity(Intent(this, SetProfileActivity::class.java))
+                    PhoneAuthProvider.getCredential(usersViewModel.getOtp(), otp.text.toString())
+                usersViewModel.signInWithPhoneAuthCredential(credential, this)
+                usersViewModel.singInSucessFullLiveData.observe(this) {
+                    startActivity(Intent(this, UpdateProfileActivity::class.java))
+                }
 
             }
         }

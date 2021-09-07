@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
-import com.example.chatzzandchat.GetUserMobileNumActivity
 import com.example.chatzzandchat.R
-import com.example.chatzzandchat.all_activites.all_act.ChatActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -15,16 +13,16 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-        if (auth.currentUser != null){
-            startActivity(Intent(this, ChatActivity::class.java))
+        if (auth.currentUser != null) {
+            startActivity(Intent(this, UserListActivity::class.java))
             finish()
-        }
-        else{
+        } else {
             hideStatusBar()
             splashScreenTimer()
         }
 
     }
+
     fun splashScreenTimer() {
         Handler().postDelayed(Runnable {
             startActivity(Intent(this, GetUserMobileNumActivity::class.java))

@@ -1,4 +1,4 @@
-package com.example.chatzzandchat.all_activites.all_fragments
+package com.example.chatzzandchat.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

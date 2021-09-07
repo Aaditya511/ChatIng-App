@@ -12,11 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatzzAndChat">
 
-        <activity android:name=".GetUserMobileNumActivity"></activity>
-        <activity android:name=".all_activites.all_act.PersnolChatActivity" />
-        <activity android:name=".all_activites.all_act.ChatActivity" />
-        <activity android:name=".all_activites.all_act.SetProfileActivity" />
-        <activity android:name=".UserSingUpActivity" />
+        <activity android:name=".ui.activities.GetUserMobileNumActivity"></activity>
+        <activity android:name=".ui.activities.ChatActivity" />
+        <activity android:name=".ui.activities.UserListActivity" />
+        <activity android:name=".ui.activities.UpdateProfileActivity" />
+        <activity android:name=".ui.activities.UserSingUpActivity" />
         <activity android:name=".ui.activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

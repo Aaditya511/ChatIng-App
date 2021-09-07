@@ -1,4 +1,4 @@
-package com.example.chatzzandchat.all_activites.all_adapter_viewholder
+package com.example.chatzzandchat.viewholders
 
 import android.view.View
 import android.widget.TextView

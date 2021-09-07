@@ -1,4 +1,4 @@
-package com.example.chatzzandchat.all_activites.all_fragments
+package com.example.chatzzandchat.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,13 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatzzandchat.R
-import com.example.chatzzandchat.all_activites.MyViewModel
-import com.example.chatzzandchat.all_activites.all_adapter_viewholder.MyFireBaseAdapter
+import com.example.chatzzandchat.adapters.UserListAdapter
+import com.example.chatzzandchat.viewmodel.userviewmodel.UsersViewModel
 
 class ChatFragment : Fragment() {
-    lateinit var myViewModel: MyViewModel
+    lateinit var msgesViewModel: UsersViewModel
     lateinit var recyclerView: RecyclerView
-    lateinit var myAdapter:MyFireBaseAdapter
+    lateinit var myAdapter: UserListAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,17 +28,17 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.rvChatFrag)
-        myViewModel = ViewModelProvider(this)[MyViewModel::class.java]
+        msgesViewModel = ViewModelProvider(this)[UsersViewModel::class.java]
 
-        val data = myViewModel.chatFragAllUser()
-        context?.let {
-            myAdapter = MyFireBaseAdapter(it,data)
-            recyclerView.layoutManager = LinearLayoutManager(it)
-            recyclerView.adapter = myAdapter
-        }
+        val data = msgesViewModel.allUserList()
+
+        myAdapter = UserListAdapter(data)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = myAdapter
 
 
     }
+
     override fun onStart() {
         super.onStart()
         myAdapter.startListening()
