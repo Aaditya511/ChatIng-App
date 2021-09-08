@@ -29,15 +29,14 @@ class UsersRepo {
 
     fun sendingVerificationCode(
         phoneNumber: String,
-        context: Context,
-        completeListner: OnCompleteListener<AuthResult>
+        context: Context
     ) {
 
         val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
 
-                signInWithPhoneAuthCredential(credential, context, completeListner)
+                signInWithPhoneAuthCredential(credential, context, null)
                 //         Toast.makeText(context, "U are Register", Toast.LENGTH_SHORT).show()
             }
 
@@ -76,13 +75,23 @@ class UsersRepo {
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
-    fun signInWithPhoneAuthCredential(
+    private fun signInWithPhoneAuthCredential(
         credential: PhoneAuthCredential,
         context: Context,
-        completeListner: OnCompleteListener<AuthResult>
+        completeListner: OnCompleteListener<AuthResult>?
     ) {
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(context as Activity, completeListner)
+        val taskSignIn = auth.signInWithCredential(credential)
+        completeListner?.let { taskSignIn.addOnCompleteListener(context as Activity, it) }
+    }
+
+    fun signInWithPhoneAuthCredential(
+        otpString: String,
+        context: Context,
+        completeListner: OnCompleteListener<AuthResult>?
+    ) {
+        val credential =
+            PhoneAuthProvider.getCredential(storedVerificationId, otpString)
+        signInWithPhoneAuthCredential(credential, context, completeListner)
     }
 
     fun sendUserNametoRealtime(userName: String, context: Context) {

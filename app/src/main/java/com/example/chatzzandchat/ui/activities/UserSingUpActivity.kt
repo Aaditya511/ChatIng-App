@@ -16,7 +16,7 @@ import com.example.chatzzandchat.viewmodel.userviewmodel.UsersViewModel
 import com.google.firebase.auth.PhoneAuthProvider
 
 class UserSingUpActivity : AppCompatActivity() {
-    lateinit var otp: OtpTextView
+    lateinit var otpTextView: OtpTextView
     lateinit var btn: Button
     lateinit var usersViewModel: UsersViewModel
     lateinit var mobNumTv: TextView
@@ -24,7 +24,7 @@ class UserSingUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_singup)
-        otp = findViewById(R.id.otp_view)
+        otpTextView = findViewById(R.id.otp_view)
         btn = findViewById(R.id.buttonOthAct)
         mobNumTv = findViewById(R.id.mobNumTv)
         val userNumber = intent.getStringExtra("MobileNumber")
@@ -34,18 +34,16 @@ class UserSingUpActivity : AppCompatActivity() {
         userNumber?.let { usersViewModel.SendingVerificationCodeMVVM(it, this) }
 
         btn.setOnClickListener {
-            if (otp.otp!!.isEmpty()) {
+            if (otpTextView.otp!!.isEmpty()) {
                 Toast.makeText(this, "Please enter otp first", Toast.LENGTH_SHORT).show()
-            } else if (otp.otp!!.length < 6) {
+            } else if (otpTextView.otp!!.length < 6) {
                 Toast.makeText(this, "Please enter full otp", Toast.LENGTH_SHORT).show()
             } else {
-                val credential =
-                    PhoneAuthProvider.getCredential(usersViewModel.getOtp(), otp.otp.toString())
-                usersViewModel.signInWithPhoneAuthCredential(credential, this)
+
+                usersViewModel.signInWithPhoneAuthCredential(otpTextView.otp.toString(), this)
                 usersViewModel.singInSucessFullLiveData.observe(this) {
                     startActivity(Intent(this, UpdateProfileActivity::class.java))
                 }
-
             }
         }
 

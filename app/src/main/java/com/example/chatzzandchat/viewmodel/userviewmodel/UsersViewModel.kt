@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
 
 class UsersViewModel : ViewModel() {
 
@@ -20,11 +21,12 @@ class UsersViewModel : ViewModel() {
 
 
     fun SendingVerificationCodeMVVM(phoneNumber: String, context: Context) {
-        userRepo.sendingVerificationCode(phoneNumber, context, OnCompleteListener { })
+        userRepo.sendingVerificationCode(phoneNumber, context)
     }
 
-    fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential, context: Context) {
-        userRepo.signInWithPhoneAuthCredential(credential, context, OnCompleteListener { task ->
+    fun signInWithPhoneAuthCredential(otpString: String, context: Context) {
+
+        userRepo.signInWithPhoneAuthCredential(otpString, context, OnCompleteListener { task ->
             if (task.isSuccessful) {
                 singInSucessFullLiveData.value = "SuccesFully Register"
                 //Toast.makeText(context, "" + singInSucessFullLiveData, Toast.LENGTH_SHORT).show()
@@ -39,7 +41,7 @@ class UsersViewModel : ViewModel() {
         })
     }
 
-    fun getOtp(): String {
+    fun getStoredVerificationId(): String {
         return userRepo.storedVerificationId
     }
 
