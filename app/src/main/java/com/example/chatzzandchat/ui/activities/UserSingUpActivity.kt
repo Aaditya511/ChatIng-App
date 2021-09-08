@@ -27,6 +27,7 @@ class UserSingUpActivity : AppCompatActivity() {
         btn = findViewById(R.id.buttonOthAct)
         mobNumTv = findViewById(R.id.mobNumTv)
         phnNumToolbar = findViewById(R.id.phnNumToolbar)
+
         val userNumber = intent.getStringExtra("MobileNumber")
         phnNumToolbar.append(" "+userNumber)
         mobNumTv.text = userNumber

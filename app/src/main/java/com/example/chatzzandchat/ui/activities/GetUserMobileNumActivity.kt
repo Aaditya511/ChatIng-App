@@ -15,9 +15,8 @@ import com.hbb20.CountryCodePicker
 class GetUserMobileNumActivity : AppCompatActivity() {
     lateinit var phoneNumber: EditText
     lateinit var submitBtn: Button
-    lateinit var menuDot:ImageView
+    lateinit var menuDot: ImageView
     lateinit var ccpCountry: CountryCodePicker
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

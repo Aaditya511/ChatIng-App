@@ -13,11 +13,11 @@
         android:theme="@style/Theme.ChatzzAndChat">
 
         <activity android:name=".ui.activities.GetUserMobileNumActivity"></activity>
-        <activity android:name=".ui.activities.ChatActivity" />
+        <activity android:name=".ui.activities.SplashScreenActivity" />
         <activity android:name=".ui.activities.UserListActivity" />
         <activity android:name=".ui.activities.UpdateProfileActivity" />
         <activity android:name=".ui.activities.UserSingUpActivity" />
-        <activity android:name=".ui.activities.SplashScreenActivity">
+        <activity android:name=".ui.activities.ChatActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

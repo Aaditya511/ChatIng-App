@@ -1,7 +1,6 @@
 package com.example.chatzzandchat.ui.activities
 
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
@@ -33,6 +32,9 @@ class ChatActivity : AppCompatActivity() {
     lateinit var sendMsgBtn: ImageView
     lateinit var recylerView: RecyclerView
     lateinit var msgListAdapter: MsgListAdapter
+    lateinit var imageViewVideoCall: ImageView
+    lateinit var imageViewCall: ImageView
+    lateinit var imageViewMenu: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +42,9 @@ class ChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
         changeColourOfStatusBar()
         auth = FirebaseAuth.getInstance()
+        imageViewCall = findViewById(R.id.imageViewCall)
+        imageViewVideoCall = findViewById(R.id.imageViewVideoCall)
+        imageViewMenu = findViewById(R.id.imageViewMenu)
         recylerView = findViewById(R.id.rvPCA)
         userName = findViewById(R.id.userNamePCA)
         backBtn = findViewById(R.id.imageViewPCA)
@@ -49,12 +54,14 @@ class ChatActivity : AppCompatActivity() {
 
         msgesViewModel = ViewModelProvider(this)[MsgesViewModel::class.java]
 
+        onclickForBtnDidNotWork()
+
         msgesViewModel.chatListLiveData.observe(this) { chatMessageList ->
             chatMessageList?.let {
                 //    msgList.clear()
                 //  msgList.addAll(it)
                 // setRv()
-                setRVWithListAdapter(it)
+                setAdapter(it)
             }
         }
 
@@ -88,7 +95,7 @@ class ChatActivity : AppCompatActivity() {
     }
 
 
-    fun setRVWithListAdapter(arrayList: ArrayList<Messages>) {
+    fun setAdapter(arrayList: ArrayList<Messages>) {
         msgListAdapter = MsgListAdapter(this, arrayList)
         msgListAdapter.submitList(arrayList)
         recylerView.layoutManager = LinearLayoutManager(this@ChatActivity)
@@ -96,12 +103,21 @@ class ChatActivity : AppCompatActivity() {
         recylerView.adapter = msgListAdapter
 
     }
-    fun changeColourOfStatusBar(){
+
+    fun changeColourOfStatusBar() {
         val window = this.window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.statusBarColor = this.resources.getColor(R.color.teal_700)
     }
 
+    fun toastMsgForBtnDidNotWork() {
+        Toast.makeText(this, "This Feature Is Not Avaliable Now ", Toast.LENGTH_SHORT).show()
+    }
 
+    fun onclickForBtnDidNotWork(){
+        imageViewMenu.setOnClickListener { toastMsgForBtnDidNotWork() }
+        imageViewVideoCall.setOnClickListener { toastMsgForBtnDidNotWork() }
+        imageViewCall.setOnClickListener { toastMsgForBtnDidNotWork() }
+    }
 }
