@@ -1,15 +1,17 @@
 package com.example.chatzzandchat.ui.activities
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatzzandchat.R
-import com.example.chatzzandchat.viewmodel.msgesviewmodel.MsgesViewModel
-import com.example.chatzzandchat.all_activites.all_adapter_viewholder.listadpter.MsgListAdapter
+import com.example.chatzzandchat.viewmodel.MsgesViewModel
+import com.example.chatzzandchat.adapters.listadpter.MsgListAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import com.example.chatzzandchat.models.Messages
@@ -28,26 +30,22 @@ class ChatActivity : AppCompatActivity() {
     lateinit var backBtn: ImageView
     lateinit var userImg: CircleImageView
     lateinit var msgTypeEt: EditText
-    lateinit var sendMsgBtn: CircleImageView
+    lateinit var sendMsgBtn: ImageView
     lateinit var recylerView: RecyclerView
-
-
     lateinit var msgListAdapter: MsgListAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
-
+        changeColourOfStatusBar()
         auth = FirebaseAuth.getInstance()
-
         recylerView = findViewById(R.id.rvPCA)
         userName = findViewById(R.id.userNamePCA)
         backBtn = findViewById(R.id.imageViewPCA)
         userImg = findViewById(R.id.userImgPCA)
         msgTypeEt = findViewById(R.id.msgType)
         sendMsgBtn = findViewById(R.id.sendMsgImg)
-
 
         msgesViewModel = ViewModelProvider(this)[MsgesViewModel::class.java]
 
@@ -97,6 +95,12 @@ class ChatActivity : AppCompatActivity() {
         recylerView.scrollToPosition(arrayList.size - 1)
         recylerView.adapter = msgListAdapter
 
+    }
+    fun changeColourOfStatusBar(){
+        val window = this.window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.statusBarColor = this.resources.getColor(R.color.teal_700)
     }
 
 

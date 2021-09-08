@@ -10,5 +10,7 @@
     <string name="welcome_tv">WELCOME</string>
     <string name="status">Online</string>
     <string name="demo_msg">receiver Msg</string>
+    <string name="searchicon">searchIcon</string>
+    <string name="logout">Logout</string>
 
 </resources>

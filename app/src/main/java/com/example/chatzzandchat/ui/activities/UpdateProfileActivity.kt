@@ -5,12 +5,13 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.chatzzandchat.R
-import com.example.chatzzandchat.viewmodel.userviewmodel.UsersViewModel
+import com.example.chatzzandchat.viewmodel.UsersViewModel
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -29,6 +30,7 @@ class UpdateProfileActivity : AppCompatActivity() {
         name = findViewById(R.id.personNameSetProfileAct)
         btn = findViewById(R.id.buttonSetProfileAct)
         viewModel = ViewModelProvider(this)[UsersViewModel::class.java]
+        changeColourOfStatusBar()
         btn.setOnClickListener {
             if (name.text.isEmpty()) {
                 Toast.makeText(this, "Plz Enter Your Name", Toast.LENGTH_SHORT).show()
@@ -38,7 +40,7 @@ class UpdateProfileActivity : AppCompatActivity() {
             } else {
                 imagePathUri?.let { it1 -> viewModel.sendDataToServer(name.text.toString(), this, it1) }
                 startActivity(Intent(this, UserListActivity::class.java))
-
+                finish()
             }
 
         }
@@ -54,6 +56,12 @@ class UpdateProfileActivity : AppCompatActivity() {
             Picasso.get().load(imagePathUri).into(profilePic)
         }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+    private fun changeColourOfStatusBar() {
+        val window = this.window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.statusBarColor = this.resources.getColor(R.color.teal_700)
     }
 
 }

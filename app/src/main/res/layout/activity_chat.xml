@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6D0D0"
+    android:background="#BDB3B3"
     android:orientation="vertical"
     tools:context=".ui.activities.ChatActivity">
 
@@ -14,17 +13,18 @@
         android:id="@+id/toolBarPersnolChatAct"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/purple_700"
+        android:background="@color/teal_700"
         android:minHeight="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
         >
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="16dp">
 
             <ImageView
                 android:id="@+id/imageViewPCA"
@@ -32,15 +32,22 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:padding="2dp"
-                app:srcCompat="@android:drawable/ic_menu_revert" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/userImgPCA"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_margin="10dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
                 android:padding="2dp"
-                android:src="@drawable/userprofile">
+                android:src="@drawable/userprofile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewPCA"
+                app:layout_constraintTop_toTopOf="parent">
 
             </de.hdodenhof.circleimageview.CircleImageView>
 
@@ -48,17 +55,53 @@
                 android:id="@+id/userNamePCA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:padding="2dp"
                 android:text="@string/user_name"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textStyle="bold">
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/userImgPCA"
+                app:layout_constraintTop_toTopOf="parent">
 
             </TextView>
 
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginRight="15dp"
+                app:layout_constraintEnd_toStartOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.406"
+                app:srcCompat="@drawable/ic_baseline_videocam_24" />
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginRight="15dp"
+                app:layout_constraintVertical_bias="0.406"
+                app:srcCompat="@drawable/ic_baseline_call_24" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginRight="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.406"
+                app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.appcompat.widget.Toolbar>
@@ -78,35 +121,40 @@
         android:id="@+id/linerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#BDB3B3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/white"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
             android:id="@+id/msgType"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/msg_type_hint"
+            android:layout_height="50dp"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
-            android:padding="3dp"
+            android:layout_weight="2"
+            android:background="@drawable/edit_text"
+            android:hint="@string/msg_type_hint"
+            android:padding="5dp"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:layout_weight="2"
             android:textStyle="bold" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/sendMsgImg"
-            android:layout_width="50dp"
-            android:padding="1dp"
-            android:layout_margin="2dp"
-            android:layout_height="50dp"
-            android:src="@drawable/send"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+        <ImageView
+                android:id="@+id/sendMsgImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="2dp"
+                android:padding="5dp"
+                android:background="@drawable/send_btn_shape"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_send_24" />
+
+
 
 
     </LinearLayout>

@@ -11,15 +11,14 @@ import android.widget.Toast
 
 import androidx.lifecycle.ViewModelProvider
 import com.example.chatzzandchat.R
-import com.example.chatzzandchat.viewmodel.userviewmodel.UsersViewModel
-
-import com.google.firebase.auth.PhoneAuthProvider
+import com.example.chatzzandchat.viewmodel.UsersViewModel
 
 class UserSingUpActivity : AppCompatActivity() {
     lateinit var otpTextView: OtpTextView
     lateinit var btn: Button
     lateinit var usersViewModel: UsersViewModel
     lateinit var mobNumTv: TextView
+    lateinit var phnNumToolbar:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +26,9 @@ class UserSingUpActivity : AppCompatActivity() {
         otpTextView = findViewById(R.id.otp_view)
         btn = findViewById(R.id.buttonOthAct)
         mobNumTv = findViewById(R.id.mobNumTv)
+        phnNumToolbar = findViewById(R.id.phnNumToolbar)
         val userNumber = intent.getStringExtra("MobileNumber")
+        phnNumToolbar.append(" "+userNumber)
         mobNumTv.text = userNumber
   //      Toast.makeText(this, "" + userNumber, Toast.LENGTH_SHORT).show()
         usersViewModel = ViewModelProvider(this)[UsersViewModel::class.java]
@@ -41,8 +42,13 @@ class UserSingUpActivity : AppCompatActivity() {
             } else {
 
                 usersViewModel.signInWithPhoneAuthCredential(otpTextView.otp.toString(), this)
+                usersViewModel.singInFailed.observe(this){
+                    Toast.makeText(this, "SingIn Failed", Toast.LENGTH_SHORT).show()
+                }
                 usersViewModel.singInSucessFullLiveData.observe(this) {
+                    Toast.makeText(this, "SingIn Success", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, UpdateProfileActivity::class.java))
+                    finish()
                 }
             }
         }

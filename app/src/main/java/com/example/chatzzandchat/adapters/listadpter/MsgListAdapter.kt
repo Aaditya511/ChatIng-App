@@ -1,4 +1,4 @@
-package com.example.chatzzandchat.all_activites.all_adapter_viewholder.listadpter
+package com.example.chatzzandchat.adapters.listadpter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatzzandchat.R
-import com.example.chatzzandchat.adapters.listadpter.MsgDiffUtil
 import com.example.chatzzandchat.viewholders.ReciverViewHolder
 import com.example.chatzzandchat.viewholders.SenderViewHolder
 import com.google.firebase.auth.FirebaseAuth

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
@@ -28,6 +29,8 @@ class UserListActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolBar)
         auth = FirebaseAuth.getInstance()
         setSupportActionBar(toolbar)
+
+        changeColourOfStatusBar()
         settingMenuOnToolBar()
         callingFragment()
     }
@@ -59,4 +62,17 @@ class UserListActivity : AppCompatActivity() {
             ContextCompat.getDrawable(this, R.drawable.ic_baseline_more_vert_24)
         toolbar.overflowIcon = drawable
     }
+
+    private fun changeColourOfStatusBar() {
+        val window = this.window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.statusBarColor = this.resources.getColor(R.color.teal_700)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        System.exit(0)
+    }
+
 }

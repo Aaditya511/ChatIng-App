@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:padding="10dp"
-        android:background="@android:color/white">
+        android:background="@drawable/bg_receiver"
+     >
 
         <TextView
             android:id="@+id/message_textReciver"
@@ -20,6 +21,8 @@
             android:layout_height="wrap_content"
             android:minWidth="120dp"
             android:maxWidth="250dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
             android:layout_alignParentLeft="true"
             android:textSize="16sp"
             android:textColor="@android:color/black"
@@ -32,6 +35,8 @@
             android:layout_alignRight="@+id/message_textReciver"
             android:layout_below="@+id/message_textReciver"
             android:textSize="11sp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
             android:textColor="#b3b3b3"
             tools:text="11:34" />
 

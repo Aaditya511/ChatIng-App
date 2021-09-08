@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatzzandchat.R
 import com.example.chatzzandchat.adapters.UserListAdapter
-import com.example.chatzzandchat.viewmodel.userviewmodel.UsersViewModel
+import com.example.chatzzandchat.viewmodel.UsersViewModel
 
 class ChatFragment : Fragment() {
     lateinit var msgesViewModel: UsersViewModel

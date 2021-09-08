@@ -12,18 +12,20 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:padding="10dp"
-        android:background="#5089fa"
+        android:background="@drawable/bg_sender"
         android:layout_alignParentRight="true">
 
         <TextView
             android:id="@+id/message_textSenderrr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
             android:minWidth="120dp"
             android:maxWidth="250dp"
             android:layout_alignParentLeft="true"
             android:textSize="16sp"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:text="@string/demo_msg" />
 
         <TextView
@@ -33,7 +35,9 @@
             android:layout_alignRight="@+id/message_textSenderrr"
             android:layout_below="@+id/message_textSenderrr"
             android:textSize="11sp"
-            android:textColor="@android:color/white"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:textColor="#b3b3b3"
             tools:text="11:34" />
 
     </RelativeLayout>

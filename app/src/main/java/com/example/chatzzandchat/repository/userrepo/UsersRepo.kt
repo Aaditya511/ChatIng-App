@@ -75,7 +75,7 @@ class UsersRepo {
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
-    private fun signInWithPhoneAuthCredential(
+     fun signInWithPhoneAuthCredential(
         credential: PhoneAuthCredential,
         context: Context,
         completeListner: OnCompleteListener<AuthResult>?
@@ -84,21 +84,16 @@ class UsersRepo {
         completeListner?.let { taskSignIn.addOnCompleteListener(context as Activity, it) }
     }
 
-    fun signInWithPhoneAuthCredential(
-        otpString: String,
-        context: Context,
-        completeListner: OnCompleteListener<AuthResult>?
-    ) {
+    fun signInWithPhoneAuthCredential(otpString: String, context: Context, completeListner: OnCompleteListener<AuthResult>?) {
         val credential =
             PhoneAuthProvider.getCredential(storedVerificationId, otpString)
         signInWithPhoneAuthCredential(credential, context, completeListner)
     }
 
-    fun sendUserNametoRealtime(userName: String, context: Context) {
+    fun sendUserNametoRealtime(userName: String) {
         val database = auth.uid?.let { Firebase.database.getReference(it) }
         val requestName = RequestName(userName, auth.uid)
         database?.setValue(requestName)
-        Toast.makeText(context, "Name Is Register", Toast.LENGTH_SHORT).show()
 
     }
 
@@ -125,12 +120,11 @@ class UsersRepo {
 
         uploadTask!!.addOnSuccessListener {
             imageRef.downloadUrl.addOnSuccessListener(imageUrlSuccessListener)
-            Toast.makeText(context, "Pic Uploaded and u have link of it", Toast.LENGTH_SHORT).show()
 
         }
     }
 
-    fun sendDataToCloudFireStore(context: Context, userName: String, imageUriToken: String) {
+    fun sendDataToCloudFireStore( userName: String, imageUriToken: String) {
         val firebaseFireStore = FirebaseFirestore.getInstance()
         val documentReference = firebaseFireStore.collection("Users").document(auth.uid!!)
         val userData: HashMap<String, Any> = HashMap()
@@ -139,9 +133,7 @@ class UsersRepo {
         userData.put("Id", auth.uid!!)
         userData.put("Status", "Online")
         documentReference.set(userData)
-            .addOnSuccessListener {
-                Toast.makeText(context, "Data uploaded", Toast.LENGTH_SHORT).show()
-            }
+
     }
 
     fun allUserList(): FirestoreRecyclerOptions<UsersList> {

@@ -1,4 +1,4 @@
-package com.example.chatzzandchat.viewmodel.msgesviewmodel
+package com.example.chatzzandchat.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

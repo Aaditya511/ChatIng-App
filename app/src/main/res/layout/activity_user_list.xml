@@ -12,34 +12,37 @@
       android:id="@+id/toolBar"
       android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
-      android:background="@color/purple_700"
-      android:minHeight="?attr/actionBarSize"
-      >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
+      android:background="@color/teal_700"
+      android:minHeight="?attr/actionBarSize">
 
-        >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
       <TextView
           android:id="@+id/textView"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:layout_marginLeft="5dp"
+          android:padding="5dp"
           android:text="@string/app_name"
           android:textColor="@color/white"
           android:textSize="20sp"
-          android:textStyle="bold" />
-    </LinearLayout>
+          android:textStyle="bold"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
   </androidx.appcompat.widget.Toolbar>
+
   <com.google.android.material.tabs.TabLayout
       android:id="@+id/tabLayout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="1dp"
-      android:background="@color/purple_700"
+      android:background="@color/teal_700"
       app:tabIndicatorColor="@color/white"
       app:tabIndicatorHeight="3dp"
       app:tabSelectedTextColor="@color/white"
@@ -54,6 +57,8 @@
       android:layout_marginTop="1dp"
       android:background="@color/white"
       android:layout_marginBottom="1dp">
+
+
 
   </androidx.viewpager.widget.ViewPager>
 
